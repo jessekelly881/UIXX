@@ -1,0 +1,41 @@
+@mixin clean-ui{
+  outline: 0;
+}
+
+@mixin darken-on-state($state, $bg_color, $percent:15%, $duration:.5s, $timing: linear){
+  &#{$state} {
+    transition-timing-function: $timing;
+    transition-duration: $duration;
+    background-color: darken($bg_color, $percent);
+    @content;
+  }
+}
+
+@mixin rotate($angle) {
+  -webkit-transform: rotate($angle);
+  -moz-transform: rotate($angle);
+  -ms-transform: rotate($angle);
+  -o-transform: rotate($angle);
+}
+
+@mixin shaddow($color: grey, $hover_multiplier:1, $size:7px){
+  box-shadow: $size $size 5px $color;
+  &:hover{
+    box-shadow: $size * $hover_multiplier $size *$hover_multiplier 5px*$hover_multiplier $color;
+  }
+}
+
+
+@mixin fix-size($width, $height, $flexable:false) {
+  display:inline-block;
+  @if $flexable {
+    max-width: $max-width;
+    max-height: $max-height;
+    width: auto;
+    height: auto;
+  }
+  @else{
+    width: $width;
+    height: $height;
+  }
+}

@@ -1,0 +1,8 @@
+
+@mixin core-blockquote($color, $left_width:5px, $right_width: 2px, $bg_color:inherit){
+  border-left: $left_width solid $color;
+  border-right: $right_width solid $color;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  background-color: $bg_color;
+}

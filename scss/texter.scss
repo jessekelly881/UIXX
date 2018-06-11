@@ -1,0 +1,67 @@
+@mixin text-selection-color($color){
+  &::selection {
+    background: $color; /* WebKit/Blink Browsers */
+  }
+  &::-moz-selection {
+    background: $color; /* Gecko Browsers */
+  }
+}
+
+@mixin disable-text-selection{
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+@mixin drop-caps($color:inherit, $font-family: inherit){
+  &:first-letter {
+    color: $color;
+    float: left;
+    font-size: 75px;
+    font-family: $font-family;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 25px;
+    padding-left: 3px;
+    @content;
+  }
+}
+
+@mixin blur-text {
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+@mixin type-out($width, $color:black, $time:2s) {
+  @-webkit-keyframes typing {
+    from { width: 0; }
+  }
+  @-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+
+	border-right: .1em solid $color;
+	white-space: nowrap;
+	overflow: hidden;
+  width: $width;
+	-webkit-animation: typing $time steps(40, end),
+	  blink-caret .5s step-end infinite alternate;
+}
+
+@mixin prefix-str($str, $font_library:inherit, $color: inherit){
+  &::before{
+    content: $str;
+    font-family: $font_library;
+    color: $color;
+    @content;
+  }
+}
+
+@mixin postfix-str($str, $font_library:inherit, $color: inherit){
+  &::after{
+    content: $str;
+    font-family: $font_library;
+    color: $color;
+    @content;
+  }
+}

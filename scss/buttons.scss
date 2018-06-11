@@ -1,0 +1,49 @@
+@import 'core';
+
+@mixin core-button($bg-color, $text-color, $border: none) {
+  position: relative;
+  background: $bg-color;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	padding: .8em 1.4em;
+	border: $border;
+	color: $text-color;
+  background-position: center;
+
+  //These are use to standardize a and button components
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+@mixin icon-button($color, $text-color, $str, $font-family:inherit, $position: ':after'){
+  @include core-button($color, white);
+  @if $position == ':after'{padding-right: 4.7em;}
+  @else {padding-left: 4.7em;}
+
+  &#{$position} {
+    position: absolute;
+    text-align: center;
+		content: $str;
+		font-family: $font-family;
+    text-align: center;
+    width: 2.8em;
+    font-size: 1em;
+    background: darken($color, 5%);
+    top: 0;
+		bottom: 0;
+    padding-top: inherit;
+    padding-bottom: inherit;
+
+    @if $position == ':after'{
+      right: 0;
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+    @else{
+      left: 0;
+      border-top-left-radius: inherit;
+      border-bottom-left-radius: inherit;
+    }
+	}
+}

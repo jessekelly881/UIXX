@@ -1,0 +1,15 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url("https://fonts.googleapis.com/css?family=Tangerine");
+@import 'scss/core';
+@import 'scss/texter';
+@import 'scss/overlay-img';
+
+
+/*
+USE style="--img:url(img1.jpeg)"
+to grab image source
+*/
+.overlay{
+  @include fix-size(270px,180px);
+  @include overlay-img-hover(var(--img), $duration: 1s);
+}
